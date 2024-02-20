@@ -1,10 +1,13 @@
-const express = require("express");
+import express from "express";
+import ProductController from "./src/controllers/product.controller.js";
+// const express = require('express');
 
 const server = express();
-server
-    .get("/", (req, res) => {
-        res.send("Hello, From inventory!");
-    })
-    .listen(3400, () => {
-        console.log("The server is listening to the port 3400");
-    });
+
+// create an instance of ProductController
+const productController = new ProductController();
+server.get("/", productController.getProducts);
+server.use(express.static("src/views"));
+// return res.send('Welcome to Inventory App');
+server.listen(3400);
+console.log("Server is listening on port 3400");
