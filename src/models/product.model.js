@@ -1,13 +1,25 @@
 export default class ProductModel {
-    constructor(_id, _name, _desc, _price, _imageUrl) {
-        this.id = _id;
-        this.name = _name;
-        this.desc = _desc;
-        this.price = _price;
-        this.imageUrl = _imageUrl;
+    constructor(id, name, desc, price, imageUrl) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
+        this.imageUrl = imageUrl;
     }
-    static get() {
+
+    static getAll() {
         return products;
+    }
+
+    static add(productObj) {
+        let newProduct = new ProductModel(
+            products.length + 1,
+            productObj.name,
+            productObj.desc,
+            productObj.price,
+            productObj.imageUrl
+        );
+        products.push(newProduct);
     }
 }
 
@@ -15,7 +27,7 @@ var products = [
     new ProductModel(
         1,
         "Product 1",
-        "Description for Product 1",
+        "Description for Product 10",
         19.99,
         "https://m.media-amazon.com/images/I/51-nXsSRfZL._SX328_BO1,204,203,200_.jpg"
     ),

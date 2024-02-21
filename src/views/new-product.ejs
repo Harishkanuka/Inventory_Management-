@@ -1,6 +1,15 @@
 <!-- views/add-product.ejs -->
 
 <h1 class="mt-5 mb-4">Add New Product</h1>
+
+<%if(errorMessage){ %>
+<div
+    class="alert alert-danger"
+    role="alert">
+    <%= errorMessage %>
+</div>
+<%}%>
+
 <form
     action="/"
     method="post">
@@ -14,8 +23,7 @@
             type="text"
             class="form-control"
             id="name"
-            name="name"
-            required />
+            name="name" />
     </div>
     <div class="mb-3">
         <label
@@ -41,9 +49,7 @@
             class="form-control"
             id="price"
             name="price"
-            step="0.01"
-            min="0"
-            required />
+            step="0.01" />
     </div>
     <div class="mb-3">
         <label
@@ -52,11 +58,10 @@
             >Image URL</label
         >
         <input
-            type="url"
+            type="text"
             class="form-control"
             id="imageUrl"
-            name="imageUrl"
-            required />
+            name="imageUrl" />
     </div>
     <button
         type="submit"
