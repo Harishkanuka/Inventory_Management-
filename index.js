@@ -41,6 +41,7 @@ app.set("views", path.join(path.resolve(), "src", "views"));
 
 app.get("/", productsController.getProducts);
 app.get("/add-product", productsController.getAddProduct);
+app.get("/update-product", productsController.getUpdatedProductView);
 app.post(
     "/",
     addProductValidationMiddleware,

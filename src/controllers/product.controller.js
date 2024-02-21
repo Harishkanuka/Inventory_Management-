@@ -17,6 +17,21 @@ class ProductsController {
         var products = ProductModel.getAll();
         res.render("index", { products });
     }
+    getUpdatedProductView(req, res, next) {
+        // 1. If the product exists then return the view
+        const { id } = req.body;
+        const productFound = ProductModel.getById(id);
+        if (productFound) {
+            res.render("update-product", {
+                product: productFound,
+                errorMessage: null,
+            });
+        }
+        // 2. else return the error
+        else {
+            res.status(401).send("Product not found");
+        }
+    }
 }
 
 export default ProductsController;
