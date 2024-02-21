@@ -1,6 +1,6 @@
 <!-- views/add-product.ejs -->
 
-<h1 class="mt-5 mb-4">Add New Product</h1>
+<h1 class="mt-5 mb-4">Update Product</h1>
 
 <%if(errorMessage){ %>
 <div
@@ -11,13 +11,14 @@
 <%}%>
 
 <form
-    action="/"
+    action="/update-product/"
     method="post">
     <input
         type="hidden"
         class="form-control"
-        id="name"
-        name="name" />
+        id="id"
+        name="id"
+        value="<%= product.id %> " />
     <div class="mb-3">
         <label
             for="name"
@@ -28,7 +29,8 @@
             type="text"
             class="form-control"
             id="name"
-            name="name" />
+            name="name"
+            value="<%= product.name %> " />
     </div>
     <div class="mb-3">
         <label
@@ -41,19 +43,22 @@
             id="desc"
             name="desc"
             rows="3"
-            required></textarea>
+            required>
+<%= product.desc %> </textarea
+        >
     </div>
     <div class="mb-3">
         <label
             for="price"
             class="form-label"
-            >Price</label
+            >Price💲</label
         >
         <input
             type="number"
             class="form-control"
             id="price"
             name="price"
+            value="<%= product.price %>"
             step="0.01" />
     </div>
     <div class="mb-3">
@@ -66,11 +71,12 @@
             type="text"
             class="form-control"
             id="imageUrl"
-            name="imageUrl" />
+            name="imageUrl"
+            value="<%= product.imageUrl %> " />
     </div>
     <button
         type="submit"
         class="btn btn-primary">
-        Add Product
+        Update Product
     </button>
 </form>

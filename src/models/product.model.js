@@ -10,7 +10,10 @@ export default class ProductModel {
     static getAll() {
         return products;
     }
-
+    static update(productObj) {
+        const index = products.findIndex((p) => p.id == productObj.id);
+        products[index] = productObj;
+    }
     static add(productObj) {
         let newProduct = new ProductModel(
             products.length + 1,
@@ -22,7 +25,7 @@ export default class ProductModel {
         products.push(newProduct);
     }
     static getById(id) {
-        products.find((p) => p.id == id);
+        return products.find((p) => p.id == id);
     }
 }
 

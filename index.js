@@ -41,12 +41,13 @@ app.set("views", path.join(path.resolve(), "src", "views"));
 
 app.get("/", productsController.getProducts);
 app.get("/add-product", productsController.getAddProduct);
-app.get("/update-product", productsController.getUpdatedProductView);
+app.get("/update-product/:id", productsController.getUpdatedProductView);
 app.post(
     "/",
     addProductValidationMiddleware,
     productsController.postAddProduct
 );
+app.post("/update-product", productsController.postUpdateProduct);
 
 app.listen(3400, () => {
     console.log("Server is running on port 3400");
