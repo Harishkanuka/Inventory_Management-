@@ -26,7 +26,7 @@ import express from "express";
 import ProductsController from "./src/controllers/product.controller.js";
 import ejsLayouts from "express-ejs-layouts";
 import path from "path";
-
+import addProductValidationMiddleware from "./src/middlewares/validation.middleware.js";
 const app = express();
 // create an instance of ProductController
 const productsController = new ProductsController();
@@ -41,8 +41,12 @@ app.set("views", path.join(path.resolve(), "src", "views"));
 
 app.get("/", productsController.getProducts);
 app.get("/add-product", productsController.getAddProduct);
-app.post("/", productsController.postAddProduct);
+app.post(
+    "/",
+    addProductValidationMiddleware,
+    productsController.postAddProduct
+);
 
 app.listen(3400, () => {
-    console.log("Server is running on port 3000");
+    console.log("Server is running on port 3400");
 });
